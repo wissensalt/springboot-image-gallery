@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Image Gallery</title>
+
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/google-fonts.css}">
+    <link rel="stylesheet" th:href="@{/static/css/baguetteBox.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/gallery-grid.css}">
+</head>
+
+<body>
+<div class="container gallery-container">
+    <h1>SpringBoot Image Gallery</h1>
+    <p class="page-description text-center">Demo for <a href="/">Display</a> and <a href="/upload">Upload</a> Image</p>
+
+    <div class="tz-gallery">
+        <div class="row">
+            <div class="col-sm-6 col-md-4" th:each="data : ${imageData}">
+                <a class="lightbox" th:href="${data.path}">
+                    <img th:src="${data.path}" alt="Park"></img>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{/static/js/baguetteBox.min.js}"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
+
+</body>
+</html>
